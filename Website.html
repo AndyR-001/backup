@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			/* Form container styles */
+			form {
+			width: 800px;
+			margin: 50px auto; 
+			padding: 30px;
+			border: none;
+			border-radius: 8px;
+			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+			}
+			
+			/* Heading styles */
+			h1 {
+			text-align: center;
+			margin-bottom: 50px;
+			font-size: 36px;
+			font-weight: bold;
+			}
+			
+			/* Subheading styles */
+			h2 {
+			text-align: center;
+			border-top: 1px solid #ccc;
+			padding-top: 8px;
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 8px;
+			margin-bottom: 20px;
+			font-size: 20px;
+			font-weight: bold;
+			color: Green;
+			text-transform: uppercase;
+			}
+			
+			
+			/* Input styles */
+			input[type="text"], input[type="number"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 18px;
+			color: #333;
+			
+			}
+			
+			input[type="radio"] {
+			width: 100%;
+			position: relative;
+			top: 16px;
+			}
+			
+			
+			/* Submit button styles */
+			input[type="submit"] {
+			width: 100%;
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: bold;
+			transition: background-color 0.2s ease;
+			}
+			
+			/* Submit button hover styles */
+			input[type="submit"]:hover {
+			background-color: #3e8e41;
+			}
+			
+			
+			
+			/* Navigation button styles */
+			.nav-buttons {
+			text-align: center;
+			margin-top: 20px;
+			}
+			
+			.button-container {
+			clear: both;
+			padding: 5px;
+			}
+			
+			button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: bold;
+			transition: background-color 0.2s ease;
+			}
+			
+			/* Navigation button hover styles */
+			button:hover {
+			background-color: #3e8e41;
+			}
+			
+			/* Confirm button styles */
+			.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color:white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 18px;
+			font-weight: bold;
+			transition: background-color 0.2s ease;
+			}
+			
+			/* Confirm button hover styles */
+			.button:hover {
+			background-color: #3e8e41;
+			}
+			
+			/* Form element label styles */
+			.form-label {
+			font-weight: bold;
+			margin-top: 20px;
+			display: block;
+			font-size: 18px;
+			color: #333;
+			}
+			
+			p {
+			position: relative;
+			font-weight: bold;
+			font-size: 18px;
+			}
+			.page {
+			display: none;
+			}
+			
+			.page.active {
+			display: block;
+			}
+			/* Form submit button styles */
+			.form-submit {
+			width: 100%;
+			background-color: #4CAF50;
+			color: white;;
+			border: none;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: bold;
+			transition: background-color 0.2s ease;
+			}
+			
+			/* Form submit button hover styles */
+			.form-submit:hover {
+			background-color: #3e8e41;
+			}
+		</style>
+		<script>
+			function showPage(pageNumber) {
+				// Hide all pages
+				var pages = document.querySelectorAll(".page");
+				for (var i = 0; i < pages.length; i++) {
+					pages[i].style.display = "none";
+				}
+				
+				// Show the specified page
+				var page = document.getElementById("page-" + pageNumber);
+				page.style.display = "block";
+			}
+		</script>
+	</head>
+	<body>
+		<div class="form-container">
+			<form name="securityForm" action="/submit" method="post">
+				
+				
+				<h1>Cybersecurity Assessment</h1>
+				
+					<div class="page active" id="page-1">
+					
+					<p>Page 1 of 7</p>
+				
+				<h2>Information About the Organisation</h2>
+				<label class="form-label">Company name:</label>
+				<input type="text" name="company_name" required>
+				<label class="form-label">Select the industry that best describes your Company:
+					<input class="form-radio" type="radio" name="industry" value="financial_services" required> Financial services
+					<input class="form-radio" type="radio" name="industry" value="technology" required> Technology
+					<input class="form-radio" type="radio" name="industry" value="healthcare" required> Healthcare
+					<input class="form-radio" type="radio" name="industry" value="manufacturing" required> Manufacturing
+					<input class="form-radio" type="radio" name="industry" value="retail" required> Retail
+					<input class="form-radio" type="radio" name="industry" value="government" required> Government
+					<input class="form-radio" type="radio" name="industry" value="education" required> Education
+					<input class="form-radio" type="radio" name="industry" value="transportation" required> Transportation
+					<input class="form-radio" type="radio" name="industry" value="energy" required> Energy
+					<input class="form-radio" type="radio" name="industry" value="other" required> Other
+					<label class="form-label">How many employees does your Company have?</label>
+					<input class="form-radio" type="radio" name="employee_count" value="1-50" required> 1-50 employees
+					<input class="form-radio" type="radio" name="employee_count" value="51-250" required> 51-250 employees
+					<input class="form-radio" type="radio" name="employee_count" value="251-500" required> 251-500 employees
+					<input class="form-radio" type="radio" name="employee_count" value="501-1000" required> 501-1000 employees
+					<input class="form-radio" type="radio" name="employee_count" value="1000+" required> 1000+ employees
+					<label class="form-label">Number of employees within the Security team:</label>
+					<input class="form-radio" type="radio" name="num_security_employees" value="0" required>0
+					<input class="form-radio" type="radio" name="num_security_employees" value="1-3" required>1-3
+					<input class="form-radio" type="radio" name="num_security_employees" value="4-6" required>4-6
+					<input class="form-radio" type="radio" name="num_security_employees" value="7-10" required>7-10
+					<input class="form-radio" type="radio" name="num_security_employees" value="10-15" required>10-15
+					<input class="form-radio" type="radio" name="num_security_employees" value="16-20" required>16-20
+					<input class="form-radio" type="radio" name="num_security_employees" value="20+" required>20+
+					<label class="form-label">Has your company suffered a Security breach in the last 12 months?</label><br>
+					<input class="form-radio" type="radio" name="securityBreach" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="securityBreach" value="no" required> No<br>
+					
+					
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(2)">Next</button>
+						</div>
+						</div>
+						
+						<div class="page" id="page-2">
+						<p>Page 2 of 7</p>
+					
+					<h2>Identity and Access Management</h2>
+					<label class="form-label">Does the company set password complexity requirements and require periodic changes? Please Select the requirements that apply.</label><br>
+					<input class="form-radio" type="radio" name="passwordRequirements" value="no" required> No password requirements<br>
+					<input class="form-radio" type="radio" name="passwordRequirements" value="uppercase" required> Must contain uppercase characters<br>
+					<input class="form-radio" type="radio" name="passwordRequirements" value="numeric" required> Must contain numeric characters<br>
+					<input class="form-radio" type="radio" name="passwordRequirements" value="special" required> Must contain special characters<br>
+					<input class="form-radio" type="radio" name="passwordRequirements" value="min-8" required> Must have a minimum length of 8 characters<br>
+					<input class="form-radio" type="radio" name="passwordRequirements" value="all" required> All of the above<br>
+					<label class="form-label">Is there a process to remove access to systems containing scoped data within 24 hours for terminated constituents?</label><br>
+					<input class="form-radio" type="radio" name="accessRemoval" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="accessRemoval" value="no" required> No<br>
+					<label class="form-label">Are stronger or multifactor credentials required for access that poses higher risk to the function (such as privileged accounts, service accounts, shared accounts and remote access)?</label><br>
+					<input class="form-radio" type="radio" name="multifactorCredentials" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="multifactorCredentials" value="no" required> No<br>
+					<label class="form-label">Logical access requirements incorporate the principles of least privilege and separation of duties?</label><br>
+					<input class="form-radio" type="radio" name="logicalAccess" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="logicalAccess" value="no" required> No<br>
+					
+					
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(3)">Next</button>
+						</div>
+						<div class="form-container">
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(1)">Previous</button>
+						</div>
+						</div>
+						
+						</div>
+						<div class="page" id="page-3">
+						<p>Page 3 of 7</p>
+					
+					<h2>Event and incident response, continuity of operations</h2>
+					<label class="form-label">Do you have a disaster recovery and incident response plan in place?</label><br>
+					<input class="form-radio" type="radio" name="disasterRecoveryPlan" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="disasterRecoveryPlan" value="no" required> No<br>
+					<label class="form-label">Do you have an incident response team available 24/7?</label><br>
+					<input class="form-radio" type="radio" name="incidentResponseTeam" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="incidentResponseTeam" value="no" required> No<br>
+					<label class="form-label">Do you periodically test your Incident Response Plan with the incident handling team?</label><br>
+					<input class="form-radio" type="radio" name="incidentResponsePlanTesting" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="incidentResponsePlanTesting" value="no" required> No<br><br>
+					<label"class="form-label" style="font-weight: bold;">Do you have security tools (IDS, IPS, etc.) and processes in place to monitor use of information processing facilities and to take corrective action to respond to system irregularities/anomalies?</label><br>
+					<input class="form-radio" type="radio" name="securityTools" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="securityTools" value="no" required> No<br>
+					<label class="form-label">Does the organisation have Cyber insurance coverage?</label><br>
+					<input class="form-radio" type="radio" name="cyberInsurance" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="cyberInsurance" value="no" required> No<br>
+					<label class="form-label">Does the organisation have data backups, are the backups logically or physically separated from source data and is it protected with the same controls as the source data?</label><br>
+					<input class="form-radio" type="radio" name="dataBackups" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="dataBackups" value="no" required> No<br>
+					
+			
+
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(4)">Next</button>
+						</div>
+						<div class="form-container">
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(2)">Previous</button>
+						</div>
+						</div>
+						
+						</div>
+						<div  class="page" id="page-4">
+						<p>Page 4 of 7</p>
+					
+					<h2>IT Security Controls</h2>
+					<label class="form-label">Is Data destroyed or securely removed from IT assets prior to redeployment and at end of life?</label><br>
+					<input class="form-radio" type="radio" name="dataRemoval" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="dataRemoval" value="no" required> No<br>
+					<label class="form-label">Do you monitor and limit the use of external devices (USB, CDs, etc.) to business need?</label><br>
+					<input class="form-radio" type="radio" name="externalDevices" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="externalDevices" value="no" required> No<br>
+					<label class="form-label">The cybersecurity architecture includes protections (such as full disk encryption) for data that is stored on assets that may be lost or stolen?</label><br>
+					<input class="form-radio" type="radio" name="cybersecurityArchitecture" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="cybersecurityArchitecture" value="no" required> No<br>
+					<label class="form-label">Does the company have an Information asset inventory that is up to date with the relevant information for asset management?</label><br>
+					<input class="form-radio" type="radio" name="assetInventory" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="assetInventory" value="no" required> No<br>
+					<label class="form-label">Does the company have network protection measures including monitoring, analysis and control of the network traffic (for example. firewalls, whitelisting, intrusion detection and prevention systems (IDPS)?</label><br>
+					<input class="form-radio" type="radio" name="networkProtection" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="networkProtection" value="no" required> No<br>
+					<label class="form-label">Is confidential data encrypted in transit and at rest?</label><br>
+					<input class="form-radio" type="radio" name="confidentialDataEncryption" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="confidentialDataEncryption" value="no" required> No<br>
+					<label class="form-label">Is the principle of least functionality enforced (for example, limiting services, limiting applications, limiting ports, limiting connected devices)?</label><br>
+					<input class="form-radio" type="radio" name="leastFunctionality" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="leastFunctionality" value="no" required> No<br>
+					<label class="form-label">Are security applications embedded into endpoints (for example, mobile device management, endpoint detection and response applications, host-based firewalls)?</label><br>
+					<input class="form-radio" type="radio" name="securityApplications" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="securityApplications" value="no" required> No<br>
+				
+				
+					
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(5)">Next</button>
+						</div>
+						<div class="form-container">
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(3)">Previous</button>
+						</div>
+						</div>
+						
+						</div>
+						<div class="page" id="page-5">
+						<p>Page 5 of 7</p>
+					
+					<h2>Risk Threat and vulnerability Management</h2>
+					<label class="form-label">Relevant threat information is gathered and cybersecurity vulnerability assessments are performed periodically and shared to stakeholders?</label><br>
+					<input class="form-radio" type="radio" name="vulnerability_assessments" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="vulnerability_assessments" value="no" required> No<br>
+					<label class="form-label">A strategy for cyber risk management is established and maintained to implement and perform activities in the risk domain in alignment with the organisation's mission and objectives?</label><br>
+					<input class="form-radio" type="radio" name="cyber_risk_management" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="cyber_risk_management" value="no" required> No<br>
+					<label class="form-label">Is there a program to manage the treatment of risks identified during assessments?</label><br>
+					<input class="form-radio" type="radio" name="risk_management_program" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="risk_management_program" value="no" required> No<br>
+					<label class="form-label">Is there a formal process for assigning ownership, reviewing risk appetite, mapping controls and tracking the progress of risk mitigation strategies?</label><br>
+					<input class="form-radio" type="radio" name="risk_mitigation_strategies" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="risk_mitigation_strategies" value="no" required> No<br>
+					<label class="form-label">Is there a vendor Management program?</label><br>
+					<input class="form-radio" type="radio" name="vendor_management" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="vendor_management" value="no" required> No<br>
+					
+					
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(6)">Next</button>
+						</div>
+						<div class="form-container">
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(4)">Previous</button>
+						</div>
+						</div>
+						
+						</div>
+						<div class="page" id="page-6">
+						<p>Page 6 of 7</p>
+				
+					
+					<h2>Workforce management</h2>
+					<label class="form-label">Is there a Human Resource policy approved by management, communicated to constituents and an owner to maintain and review?</label><br>
+					<input class="form-radio" type="radio" name="humanResourcePolicy" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="humanResourcePolicy" value="no" required> No<br>
+					<label class="form-label">Are application development teams trained in secure coding techniques at least annually?</label><br>
+					<input class="form-radio" type="radio" name="secureCoding" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="secureCoding" value="no" required> No<br>
+					<label class="form-label">Is security awareness training provided to employees at least annually?</label><br>
+					<input class="form-radio" type="radio" name="securityAwareness" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="securityAwareness" value="no" required> No<br>
+					<label class="form-label">Are background and reference checks conducted before hiring new employees?</label><br>
+					<input class="form-radio" type="radio" name="backgroundChecks" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="backgroundChecks" value="no" required> No<br>
+					<label class="form-label">Departmental cybersecurity responsibilities are identified and assigned to specific people in the organisation?</label><br>
+					<input class="form-radio" type="radio" name="cybersecurityResponsibilities" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="cybersecurityResponsibilities" value="no" required> No<br>
+					
+					
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(7)">Next</button>
+						</div>
+						<div class="form-container">
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(5)">Previous</button>
+						</div>
+						</div>
+						
+						</div>
+						<div class="page" id="page-7">
+						<p>Page 7 of 7</p>
+					
+					<h2>Standards, Processes and Compliance</h2>
+					<label class="form-label">Do you gather security assessments of your third parties, monitor their performance and security risks(specifically any that might have access to any of your data)</label><br>
+					<input class="form-radio" type="radio" name="thirdPartyAssessment" value="no" required> Never<br>
+					<input class="form-radio" type="radio" name="thirdPartyAssessment" value="onboarding" required> Only on onboarding<br>
+					<input class="form-radio" type="radio" name="thirdPartyAssessment" value="12" required> Every 12 months<br>
+					<input class="form-radio" type="radio" name="thirdPartyAssessment" value="2" required> Every 2 years<br>
+					<input class="form-radio" type="radio" name="thirdPartyAssessment" value="2+" required> More than 2+ years <br>
+				    <input class="form-radio" type="radio" name="thirdPartyAssessment" value="breach" required> Only in the event of a third party security breach <br>
+					<label class="form-label">Physical access controls (such as fences, locks, alarms and signage) are implemented and logs are maintained to determine who is allowed access and who has gained access to your on site premise?</label><br>
+					<input class="form-radio" type="radio" name="physicalAccessControls" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="physicalAccessControls" value="no" required> No<br>
+					<label class="form-label">Do you have a formal change management process which includes impact analysis, approvals, testing, and rollback procedures?</label><br>
+					<input class="form-radio" type="radio" name="changeManagementProcess" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="changeManagementProcess" value="no" required> No<br>
+					<label class="form-label">Do you have documented security policies, including: Acceptable use, network security, data classification and User Identification, Authentication, and Authorisation?</label><br>
+					<input class="form-radio" type="radio" name="documentedSecurityPolicies" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="documentedSecurityPolicies" value="no" required> No<br>
+					<label class="form-label">Have the policies been reviewed in the last 12 months?</label><br>
+					<input class="form-radio" type="radio" name="policiesReviewed" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="policiesReviewed" value="no" required> No<br>
+					<label class="form-label">Is physical access (such as keys, keycards, Identification badges) revoked when no longer needed?</label><br>
+					<input class="form-radio" type="radio" name="physicalAccessRevoked" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="physicalAccessRevoked" value="no" required> No<br>
+					<label class="form-label">Do you Process any personal Data? If so, are you GDPR compliant? If you do not process any, please select N/A.</label><br>
+					<input class="form-radio" type="radio" name="gdprCompliant" value="yes" required> Yes<br>
+					<input class="form-radio" type="radio" name="gdprCompliant" value="no" required> No<br>
+					<input class="form-radio" type="radio" name="gdprCompliant" value="na" required> N/A<br>
+				
+					<div class="button-container">
+						<input class="form-submit" type="submit" value="Submit" onclick="document.forms['securityForm'].submit()"/>
+					</div>
+					
+					<div class="form-container">
+						<div class="nav-buttons">
+						<button type="button" onclick="event.preventDefault(); showPage(6)">Previous</button>
+						</div>
+						</div>
+				</form>
+			</div>
+			
+		</body>
+	</html>

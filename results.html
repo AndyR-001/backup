@@ -1,0 +1,76 @@
+<head>
+	<style>
+		/* Define the main container for the page */
+		body {
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+		}
+		.container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0;
+		}
+		
+		/* Use a CSS reset to ensure consistent styling across browsers */
+		* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		}
+		/* Set the text alignment and typography for headings */
+        h1, h2 {
+		text-align: center;
+		font-size: 36pt;
+		font-weight: bold;
+        }
+        
+        /* Use media Queries to adjust font size for different screen sizes */
+        @media (min-width: 768px) {
+		h1, h2 {
+		font-size: 36pt;
+		}
+        }
+        @media (max-width: 767px) {
+		h1, h2 {
+		font-size: 24pt;
+		}
+        }
+        
+		ul {
+		list-style-type: decimal;
+		}
+        /* Add hover effect to the list items */
+        ul li {
+		cursor: pointer;
+		padding: 10px;
+		border: 1px solid green;
+		border-radius: 4px;
+		transition: all .2s ease-in-out;
+		text-align: left;
+        }
+        ul li:hover {
+		background-color: lightgreen;
+		transform: scale(1.05);
+        }
+		
+	</style>
+</head>
+<div class="container">
+    <!-- Display the company name in the header -->
+    <h1>Results for {{ company_name }}</h1>
+    <!-- Display the subtitle showing that it's the company risk score -->
+    <h2 style="font-size: 24;">Your company's risk score is:</h2>
+    <!-- Display the risk score with font size and font weight and color depending on the score -->
+    <p style="font-size: 36pt; text-align: center; font-weight: bold; color: {% if percentage_risk_score == 0 %}green{% elif percentage_risk_score <= 25 %}green
+	{% elif percentage_risk_score <= 50 %}gold{% elif percentage_risk_score <= 70 %}orange{% else %}red{% endif %}">{{ percentage_risk_score }}%</p>
+    <!-- Display the output message with a font weight bold -->
+    <p style="font-size: 24; font-weight: bold;">{{ output_message }}</p>
+    <!-- Start a unordered list to display recommendations -->
+    <ul>
+        {% for recommendation in recommendations %}
+            <!-- add each recommendation to the list as a list item -->
+            <li>{{ recommendation|safe }}</li>
+        {% endfor %}
+    </ul>
+</div>
